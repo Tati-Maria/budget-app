@@ -4,7 +4,7 @@ import { Link, useFetcher } from "react-router-dom";
 import {TrashIcon} from "@heroicons/react/24/solid";
 
 
-const ExpenseItem = ({expense}) => {
+const ExpenseItem = ({expense, showBudget}) => {
   const fetcher = useFetcher();
   //match the color of the category to the expense
   const budget = getAllMatchingItems({
@@ -18,13 +18,13 @@ const ExpenseItem = ({expense}) => {
         <td>{expense.name}</td>
         <td>{formatCurrency(expense.amount)}</td>
         <td>{formatDate(expense.createdAt)}</td>
-        <td>
+        { showBudget && (<td>
           <Link
           style={{"--accent": budget.color}} 
           to={`/budget/${budget.id}`}>
           {budget.name}
           </Link>
-        </td>
+        </td>)}
         <td>
           <fetcher.Form method="POST">
             <input type="hidden" name="_action" value='deleteExpense'/>
