@@ -1,13 +1,17 @@
 import { Link, useRouteError, useNavigate } from "react-router-dom";
 import {HomeIcon, ArrowUturnLeftIcon} from "@heroicons/react/24/solid";
-
+import {useEffect} from "react";
 
 
 const Error = () => {
   const error = useRouteError();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    document.title = 'Error';
+  }, []);
 
+  
   return (
     <div className="error">
       <h1>

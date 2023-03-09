@@ -1,5 +1,5 @@
 //loader for the dashboard page
-
+import { useEffect } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { toast } from "react-toastify";
 import AddBudgetForm from "../components/AddBudgetForm";
@@ -88,6 +88,12 @@ export async function dashboardAction({request}) {
 //dashboard page
 const Dashboard = () => {
     const {userName, budgets, expenses} =useLoaderData();
+
+    //change document title
+    useEffect(() => {
+      document.title = 'MoBudget - Dashboard';
+    }, []);
+    
   return (
     <>
       {userName ? (

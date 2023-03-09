@@ -1,5 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { logoutActions } from "./actions/logout";
+import { deleteBudget } from "./actions/deleteBudget";
 import Main, { mainLoader } from "./layouts/Main";
 import Dashboard, { dashboardAction, dashboardLoader } from "./pages/Dashboard";
 import Error from "./pages/Error";
@@ -34,7 +35,13 @@ const router = createBrowserRouter([
         element: <ExpenseCategory />,
         loader: budgetLoader,
         action: budgetAction,
-        errorElement: <Error />
+        errorElement: <Error />,
+        children: [
+          {
+            path: 'delete',
+            action: deleteBudget
+          }
+        ]
       },
       {
         path: 'logout',

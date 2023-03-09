@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+
 export const wait = () => new Promise(res => setTimeout(res, Math.random() * 800));
 
 
@@ -102,3 +105,14 @@ export const formatDate = (date) => {
         day: 'numeric',
     });
 }
+
+//scroll to top
+export const ScrollToTop = () => {
+    const {pathname} = useLocation();
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
+
+    return null;
+
+};

@@ -1,6 +1,6 @@
 import wave from "../images/wave.svg";
 import { Outlet, useLoaderData } from "react-router-dom";
-import { fetchData } from "../helpers/helpers"
+import { fetchData, ScrollToTop } from "../helpers/helpers"
 import Nav from "../components/Nav";
 
 export function mainLoader() {
@@ -16,9 +16,10 @@ const Main = () => {
     <div className="layout">
         <Nav userName={userName} />
         <main>
+        <ScrollToTop />
         <Outlet />
         </main>
-        <img src={wave} alt="" />
+        <img src={wave} alt="wave svg" />
     </div>
   )
 }
